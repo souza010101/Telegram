@@ -2,18 +2,25 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Redirect</title>
+  <title>Open</title>
 </head>
 <body style="background:#000;color:#fff;display:flex;align-items:center;justify-content:center;height:100vh;">
 
-<button id="go" style="font-size:20px;padding:15px 25px;">
-  CONTINUAR
+<button onclick="go()" style="font-size:22px;padding:16px 30px;">
+  ABRIR TELEGRAM
 </button>
 
 <script>
-document.getElementById("go").onclick = function () {
-  window.open("https://t.me/FrassettoXitter", "_blank");
-};
+function go() {
+  // tenta intent direto
+  window.location.href =
+    "intent://resolve?domain=FrassettoXitter#Intent;scheme=tg;package=org.telegram.messenger;end";
+
+  // fallback web
+  setTimeout(function () {
+    window.location.href = "https://t.me/FrassettoXitter";
+  }, 800);
+}
 </script>
 
 </body>
